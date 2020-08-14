@@ -1,0 +1,31 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx babel ./src --out-dir lib",
+    "start-dev": "pm2 start ./lib/index.js --watch --env development",
+    "start-prod": "pm2 start ./lib/index.js --watch --env production",
+    "dev": "npm run clean && npm run build && npm run start-dev",
+    "prod": "NODE_ENV=production npm run clean && npm run build && npm run start",
+    "clean": "rimraf lib",
+    "stop": "pm2 stop all",
+    "delete": "pm2 delete all"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.10.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.0",
+    "babel-cli": "^6.26.0",
+    "rimraf": "^3.0.2"
+  },
+  "description": ""
+}
