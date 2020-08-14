@@ -5,8 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx babel ./src --out-dir lib",
-    "start-dev": "pm2 start ./lib/index.js --watch --env development",
-    "start-prod": "pm2 start ./lib/index.js --watch --env production",
+    "start-dev": "nodemon --exec babel-node ./src/index.js",
+    "start-prod": "pm2 start ecosystem.config.js --only Prod-Api --watch --env production",
     "dev": "npm run clean && npm run build && npm run start-dev",
     "prod": "NODE_ENV=production npm run clean && npm run build && npm run start",
     "clean": "rimraf lib",
@@ -18,6 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.10.5",
+    "axios": "^0.19.2",
     "express": "^4.17.1"
   },
   "devDependencies": {
@@ -25,6 +26,7 @@
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.0",
     "babel-cli": "^6.26.0",
+    "nodemon": "^2.0.4",
     "rimraf": "^3.0.2"
   },
   "description": ""

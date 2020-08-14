@@ -6,9 +6,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var express = require('express');
 
+var PORT = 3000;
 var app = express();
-var port = 3000;
-app.use('/', _router["default"]);
-app.listen(port, function () {
-  console.log("Example app listening at http://localhost:".concat(port));
+app.use('/api', _router["default"]);
+app.listen(PORT, function () {
+  console.log("Example app listening at http://localhost:".concat(PORT));
 });

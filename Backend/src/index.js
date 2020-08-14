@@ -2,12 +2,12 @@ import routes from './Routes/router.js'
 
 
 const express = require('express')
+const PORT = 3000
 
 const app = express()
-const port = 3000
 
-app.use('/', routes)
-
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+app.use('/api', routes)
+     
+app.listen(PORT, () => {
+    console.log(`Example app listening at http://localhost:${PORT}`)
 })
