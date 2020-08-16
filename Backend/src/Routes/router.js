@@ -12,7 +12,7 @@ routes.get('/test', (req, res) => {
 routes.get('/new', (req, res) => {
     res.send('New page on hot reload')
 })
-
+  
 routes.get('/user', (req, res) => {
 
     const getData = async () => {
