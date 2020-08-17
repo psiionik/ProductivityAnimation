@@ -14,7 +14,6 @@ routes.get('/new', (req, res) => {
 })
   
 routes.get('/user', (req, res) => {
-
     const getData = async () => {
         let data = await axios.get(BASE_URL + '/facts')
             .then((response) => {
