@@ -1,39 +1,37 @@
 import { Router } from 'express'
 import axios from 'axios'
+const debug = require('debug')('express:router')
 
 const BASE_URL = "https://cat-fact.herokuapp.com"
 
-const routes = Router()
+export const routes = () => {
+    const apiRoutes = Router()
 
-routes.get('/test', (req, res) => {
-    res.send('Hello World')
-})
-  
-routes.get('/new', (req, res) => {
-    res.send('New page on hot reload')
-})
-  
-routes.get('/user', (req, res) => {
-    const getData = async () => {
-        let data = await axios.get(BASE_URL + '/facts')
-            .then((response) => {
-                return response.data
-            })
-        res.send(JSON.stringify(data))
-    }
+    apiRoutes.get('/', (req, res) => {
+        debug(req.method + ' '+ req.url)
+        res.send(process.env.DEBUG)
+    })
 
-    getData()
-})
+    apiRoutes.get('/test', (req, res) => {
+            res.send('Hello World')
+        })
+          
+    apiRoutes.get('/new', (req, res) => {
+        res.send('New page on hot reload')
+    })
+        
+    apiRoutes.get('/user', (req, res) => {
+        const getData = async () => {
+            let data = await axios.get(BASE_URL + '/facts')
+                .then((response) => {
+                    return response.data
+                })
+            res.send(JSON.stringify(data))
+        }
 
-export default routes
+        getData()
+    })
 
-// export const router = () => {
-//     const apiRoutes = Router()
-
-//     apiRoutes.get('/', (req, res) => {
-//         res.send("Testing withing router")
-//     })
-
-//     return apiRoutes
-// };
+    return apiRoutes
+};
 
