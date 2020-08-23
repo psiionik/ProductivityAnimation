@@ -13,14 +13,17 @@ export const routes = () => {
     })
 
     apiRoutes.get('/test', (req, res) => {
-            res.send('Hello World')
-        })
-          
+        debug(req.method + ' '+ req.url)
+        res.send('Hello World')
+    })
+        
     apiRoutes.get('/new', (req, res) => {
+        debug(req.method + ' '+ req.url)
         res.send('New page on hot reload')
     })
         
     apiRoutes.get('/user', (req, res) => {
+        debug(req.method + ' '+ req.url)
         const getData = async () => {
             let data = await axios.get(BASE_URL + '/facts')
                 .then((response) => {
