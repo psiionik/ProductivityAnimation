@@ -1,14 +1,5 @@
-import admin from '../Config/admin'
+import admin from '../Config/Firebase/admin'
 
-const db = admin.firestore()
+const dbConnection = admin.firestore()
 
-const testDBAdd = {
-    firstName: 'testing',
-    lastName: 'will work',
-}
-
-async function addDataTest() {
-    await db.collection('users').doc('alovelace').set(testDBAdd)
-}
-
-export default addDataTest
+export default dbConnection
