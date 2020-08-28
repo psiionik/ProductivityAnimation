@@ -20,6 +20,8 @@ var _express = require("express");
 
 var _axios = _interopRequireDefault(require("axios"));
 
+var _UsersController = _interopRequireDefault(require("../Controllers/Users/UsersController"));
+
 var debug = require('debug')('express:router');
 
 var BASE_URL = "https://cat-fact.herokuapp.com";
@@ -30,13 +32,9 @@ var routes = function routes() {
     debug(req.method + ' ' + req.url);
     res.send(process.env.DEBUG);
   });
-  apiRoutes.get('/test', function (req, res) {
-    res.send('Hello World');
-  });
-  apiRoutes.get('/new', function (req, res) {
-    res.send('New page on hot reload');
-  });
   apiRoutes.get('/user', function (req, res) {
+    debug(req.method + ' ' + req.url);
+
     var getData = /*#__PURE__*/function () {
       var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
         var data;
@@ -68,6 +66,7 @@ var routes = function routes() {
 
     getData();
   });
+  apiRoutes.post('/user', _UsersController["default"].createUser);
   return apiRoutes;
 };
 
